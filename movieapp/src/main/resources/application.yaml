@@ -1,0 +1,11 @@
+server:
+  port: 8081
+spring:
+  security:
+    user:
+      name: arbaz
+      password: arbaz3421
+      roles: USER
+  data:
+    mongodb:
+      uri: "mongodb+srv://${MONGO_USER}:${MONGO_PASSWORD}@${MONGO_CLUSTER}/movies?retryWrites=true&w=majority"
