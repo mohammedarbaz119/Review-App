@@ -5,9 +5,16 @@ import Container from "react-bootstrap/Container"
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { NavDropdown } from "react-bootstrap";
-import {NavLink} from "react-router-dom";
+import {NavLink, useNavigate} from "react-router-dom";
+import { useUserContext } from "../../Context/UserContext";
 
 const Header = () => {
+ const {user,dispatch} = useUserContext()
+const navigate = useNavigate()
+ const logout = ()=>{
+dispatch({type:'LOGOUT'})
+navigate("/login")
+ }
  
 return (
    
@@ -26,8 +33,9 @@ return (
                     <NavLink className ="nav-link" to="/">Home</NavLink>
                     <NavLink className ="nav-link" to="/watchList">Watch List</NavLink>      
                 </Nav>
-                <Button variant="outline-info" className="me-2">Login</Button>
-                <Button variant="outline-info">Register</Button>
+              { !user.user && <NavLink to={"/login"}><Button variant="outline-info" className="me-2">Login</Button></NavLink>}
+              { !user.user && <NavLink to={"/register"}><Button variant="outline-info">Register</Button></NavLink>}
+              {user.user&&<Button onClick={logout} variant="outline-info">Logout</Button>}
             </Navbar.Collapse>
         </Container>
     </Navbar>

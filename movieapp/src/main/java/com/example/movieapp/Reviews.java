@@ -15,4 +15,13 @@ public class Reviews {
     @Id
     private ObjectId id;
     private String body;
+    private String imdbId;
+    private String username;
+
+    public Reviews(String reviewbody,String username,String imdbId) {
+        this.body=reviewbody;
+        this.username=username;
+        this.imdbId=imdbId;
+    }
+
 }

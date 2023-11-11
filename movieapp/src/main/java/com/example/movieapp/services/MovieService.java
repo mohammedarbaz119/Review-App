@@ -10,6 +10,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.logging.Logger;
 
 @Service
@@ -18,13 +19,10 @@ public class MovieService {
     @Autowired
     private MovieRepository movieRepository;
     public List<Movie> getall(){
-        logger.info("this a messgae");
-        logger.info(SecurityContextHolder.getContext().toString());
-
+        logger.info("this is a message");
         return  movieRepository.findAll();
     }
-    public Movie getmovie(ObjectId objid){
-
-        return movieRepository.findById(objid).orElse(null);
+    public Optional<Movie> getmovie(String imdbId){
+        return movieRepository.findByImdbId(imdbId);
     }
 }
