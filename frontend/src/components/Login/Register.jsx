@@ -25,8 +25,17 @@ function Register() {
   });
 
   const handleChange = (e) => {
-setErr("")
+          setErr("")
+
     const { name, value, type, checked } = e.target;
+    if(name==='agreeTerms' && !e.target.checked){
+       setErr("You must agree to the terms and conditions")
+  
+      }
+    
+
+    
+  
     const newValue = type === 'checkbox' ? checked : value;
 
     setFormData({
@@ -54,16 +63,18 @@ setErr("")
     axiosConfig.post('user/register',formData).then(res=>{
       dispatch({type:"LOGIN",payload:res.data})
       navigate("/")
-  }).catch(err=>console.error(err))
+  }).catch(err=>{
+    setErr(err.response.data)
+  })
 
   };
 
   return (
     <MDBContainer fluid className='d-flex align-items-center justify-content-center bg-image' style={{backgroundImage: 'url(https://mdbcdn.b-cdn.net/img/Photos/new-templates/search-box/img4.webp)'}}>
       <div className='mask gradient-custom-3'></div>
-      <MDBCard className='m-5' style={{maxWidth: '600px'}}>
-        <MDBCardBody className='px-5 bg-black text-white br-1'>
-          <h2 className="text-uppercase text-center mb-5">Create an account</h2>
+      <MDBCard className='m-5 text-white my-5 mx-auto bg-dark' >
+        <MDBCardBody className='px-5 bg-black text-white ' style={{maxWidth: '600px', borderRadius: '1.2rem'}}>
+          <h2 className="text-uppercase text-center mt-3 mb-5">Create an account</h2>
           <form onSubmit={handleSubmit}>
             <MDBInput
               wrapperClass='mb-4'
@@ -84,6 +95,7 @@ setErr("")
               name='password'
               value={formData.password}
               onChange={handleChange}
+              
             />
             <MDBInput
               wrapperClass='mb-4'

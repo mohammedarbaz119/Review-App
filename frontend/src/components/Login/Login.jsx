@@ -36,6 +36,7 @@ const [err,setErr] = useState("")
     e.preventDefault();
 
     if(formData.username===''||formData.password===''){      
+      setErr("please enter all the fields")
       return
     }
     // Handle form submission with the formData
@@ -48,15 +49,15 @@ const [err,setErr] = useState("")
 
   return (
     <MDBContainer fluid>
-      <MDBRow className='d-flex justify-content-center align-items-center h-100'>
+      <MDBRow className='d-flex justify-content-center align-items-center h-100 '>
         <MDBCol col='12'>
-          <MDBCard className='bg-dark text-white my-5 mx-auto' style={{ borderRadius: '1rem', maxWidth: '400px' }}>
+          <MDBCard className='bg-dark text-white my-5 mx-auto ' style={{ borderRadius: '1rem', maxWidth: '400px' }}>
             <MDBCardBody className='p-5 d-flex flex-column align-items-center mx-auto w-100'>
               <h2 className="fw-bold mb-2 text-uppercase">Login</h2>
               <p className="text-white-50 mb-5">Please enter your login and password!</p>
-              <form onSubmit={handleSubmit}>
+              <form onSubmit={handleSubmit} className='w-100'>
                 <MDBInput
-                  wrapperClass='mb-4  w-100'
+                  wrapperClass='mb-4 w-100'
                   labelClass='text-white'
                   label='Username'
                   id='username'
@@ -77,13 +78,13 @@ const [err,setErr] = useState("")
                   value={formData.password}
                   onChange={handleChange}
                 />
-                <Button  className='mx-5 px-5 bg-white text-black' type='submit' size='lg'>
+                <Button  className='w-100 text-bold px-5 bg-blue text-black' type='submit' size='lg'>
                   Login
                 </Button>
               </form>
-            {err&&<p style={{color:'red',margin:'10px'}}>{err}</p>}
+            {err&&<p className='my-2' style={{color:'red'}}>{err}</p>}
 
-              <div className='d-flex flex-row mt-3 mb-5'>
+              {/* <div className='d-flex flex-row mt-3 mb-5'>
                 <MDBBtn tag='a' color='none' className='m-3' style={{ color: 'white' }}>
                   <MDBIcon fab icon='facebook-f' size="lg"/>
                 </MDBBtn>
@@ -93,10 +94,10 @@ const [err,setErr] = useState("")
                 <MDBBtn tag='a' color='none' className='m-3' style={{ color: 'white' }}>
                   <MDBIcon fab icon='google' size="lg"/>
                 </MDBBtn>
-              </div>
-              <div>
-                <p className="mb-0">Don&apost have an account? <Link to="/register">Sign up</Link></p>
-              </div>
+              </div> */}
+              
+                <p className="my-5">Don&apos;t have an account? <Link to="/register">Sign up</Link></p>
+              
             </MDBCardBody>
           </MDBCard>
         </MDBCol>

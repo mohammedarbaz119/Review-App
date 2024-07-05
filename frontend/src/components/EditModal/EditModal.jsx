@@ -1,5 +1,6 @@
+/* eslint-disable react/prop-types */
 import React, { useState } from "react";
-import { Button, Modal } from "react-bootstrap";
+import { Modal } from "react-bootstrap";
 import ReviewForm from "../reviewForm/ReviewForm";
 import axiosConfig from "../../api/axiosConfig";
 import { useNavigate } from "react-router-dom";
@@ -7,7 +8,7 @@ import { useUserContext } from "../../Context/UserContext";
 
 export default function EditModal({ show, setShow,content,setcontent,imdbId,setid}) {
   const nav = useNavigate()
-  const { user,dispacth}=  useUserContext()
+  const {user}=  useUserContext()
   const handleClose = () => {
     setcontent("")
     setid("")
@@ -15,9 +16,7 @@ export default function EditModal({ show, setShow,content,setcontent,imdbId,seti
     console.log(content)
   };
   const handleShow = () => {
-
     setShow(true)
-  
   };
   const submit = async (e) => {
     e.preventDefault();

@@ -110,10 +110,10 @@ useEffect(()=>{
     return <Loader/>  
   }
   return (
-    <Container>
+    <Container style={{overflow:"auto",backgroundColor:"black",width:"100%",minHeight:"93.9dvh"}} >
       <Row className="mt-2">
         <Col>
-          <img src={movie?.poster} alt="" />
+          <img src={movie?.poster} alt="" width={300} />
         </Col>
         <Row>
           <Col>

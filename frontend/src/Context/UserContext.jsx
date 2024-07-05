@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import React, { createContext, useContext, useEffect, useReducer} from "react";
+import { createContext, useContext, useEffect, useReducer} from "react";
 
 const MyContext = createContext();
 

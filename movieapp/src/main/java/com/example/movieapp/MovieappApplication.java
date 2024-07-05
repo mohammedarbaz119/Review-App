@@ -16,7 +16,7 @@ public class MovieappApplication {
 
 	@GetMapping(value = "/")
 	@Secured("USER")
-	public String getvlaue(){
+	public String getvalue(){
 		return "arbaz";
 	}
 	public static void main(String[] args) {

@@ -6,7 +6,7 @@ const Layout = () => {
   return (
     <>
     <Header></Header>
-    <main>
+    <main style={{height:"fit-content"}}>
       <Outlet/>
     </main>
     </>
